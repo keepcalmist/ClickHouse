@@ -1,0 +1,20 @@
+syntax = "proto3";
+option go_package = "./";
+
+package service;
+
+
+
+
+message Request {
+    int32  x = 1;
+    int32  y = 2;
+}
+
+message Response{
+    repeated int32 arr = 1;
+}
+
+service Fibonacci {
+    rpc Get (Request) returns (Response) {}
+}
