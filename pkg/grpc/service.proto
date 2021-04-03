@@ -5,6 +5,9 @@ package service;
 
 
 
+service Fibonacci {
+    rpc Get (Request) returns (Response) {}
+}
 
 message Request {
     int32  x = 1;
@@ -13,8 +16,6 @@ message Request {
 
 message Response{
     repeated int32 arr = 1;
+    string error = 2;
 }
 
-service Fibonacci {
-    rpc Get (Request) returns (Response) {}
-}
