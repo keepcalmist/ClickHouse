@@ -36,7 +36,8 @@ func (s *server) Run(conf *viper.Viper, quit chan bool) {
 		if err := grpcServer.Serve(listener); err != nil {
 			log.Println(err)
 		}
+		<-quit
+		grpcServer.GracefulStop()
 	}()
-	<-quit
-	grpcServer.GracefulStop()
+
 }

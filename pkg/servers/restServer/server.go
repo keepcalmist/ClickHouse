@@ -26,15 +26,17 @@ func New(fibo fibonacci.FiboService) servers.Server {
 func (s *server) Run(conf *viper.Viper, quit chan bool) {
 	s.serv.Addr = ":" + conf.GetString("REST_SERVER_ADDRESS")
 	s.serv.Handler = s.initRouter()
+	log.Println("Http server starting on port: ", conf.GetString("REST_SERVER_ADDRESS"))
 	go func() {
 		if err := s.serv.ListenAndServe(); err != nil {
 			log.Println("Server error: ", err)
 		}
+		<-quit
+		ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+		defer cancel()
+		s.serv.Shutdown(ctx)
 	}()
-	<-quit
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	defer cancel()
-	s.serv.Shutdown(ctx)
+
 }
 
 func (s *server) initRouter() *mux.Router {

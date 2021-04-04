@@ -21,7 +21,7 @@ func main() {
 	client := pb.NewFibonacciClient(conn)
 
 	req, err := client.Get(context.Background(), &pb.Request{
-		X: 10,
+		X: 1,
 		Y: 10,
 	})
 
