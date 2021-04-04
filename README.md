@@ -2,7 +2,7 @@
 
 ### **Installation**:
 * You should have working Redis on local machine
-1. You can run redis in docker-compose file *Run this command* docker-compose up
+1. You can run redis in docker-compose file *Run this command*: docker-compose up
 * To start server run 
 1. go mod download 
 2. go run ./cmd/server/main.go 
