@@ -1,6 +1,13 @@
 # Fibonacci
 
 ### **Installation**:
+    * You should have working Redis on local machine
+    1. You can run redis in docker-compose file *Run this command* docker-compose up
+    To start server run 
+    1. go mod download 
+    2. go run ./cmd/server/main.go 
+    To start client 
+    1. go run ./cmd/client/main.go 
     
 ### **Features**:
  * You can count Fibonacci numbers between x and y 
