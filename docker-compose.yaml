@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  go_docker_image:
+    container_name: golang_server
+    build: docker
+    ports:
+      - "5300:5300"
+      - "5400:5400"
+    networks:
+      - backend
+  redis:
+    image: "redis:alpine"
+    ports:
+    - "6379:6379"
+    networks:
+      - backend
+
+networks:
+  backend:
